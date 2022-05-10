@@ -1,26 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// @ts-nocheck
+import { TreeView } from './components/TreeView';
+import { MainContainer } from './styles';
+import dataValues from './data/data.json';
+import { IData } from './dtos';
+
+const data: IData = Object.values(dataValues);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <MainContainer>{<TreeView data={data} />}</MainContainer>;
 }
 
 export default App;
