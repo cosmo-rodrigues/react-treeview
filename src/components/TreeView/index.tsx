@@ -1,4 +1,6 @@
+// @ts-nocheck
 import { useContext } from 'react';
+
 import { TreeContext, TreeProvider } from '../../context/TreeContext';
 import { IDtaItem } from '../../dtos';
 import { TreeItem } from '../TreeItem';

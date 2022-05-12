@@ -39,8 +39,9 @@ export const Checkbox = styled.span<ICheckProps>`
     isIndeterminate &&
     css`
       background-color: #ccc;
+      color: #009;
       &::after {
-        content: '•';
+        content: '-';
       }
     `}
 `;

@@ -1,9 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { TreeContext } from '../../context/TreeContext';
 import { Checkbox, CheckboxContainer, Label } from './styles';
 
-export function CheckboxComponente({ id, name, isIndeterminate, isChecked }) {
-  const { setCheckedIds, checkedIds } = useContext(TreeContext);
+export function CheckboxComponente({ id, name, isIndeterminate }) {
+  const { setCheckedIds, checkedIds, parentChecked } = useContext(TreeContext);
+
+  useEffect(() => {
+    localStorage.setItem('@treeViewApp/checked', JSON.stringify(checkedIds));
+  }, [checkedIds]);
+
   function handleCheckedItems(checkedId: string) {
     const alreadyCheckId = checkedIds.some((item) => item === checkedId);
     if (alreadyCheckId) {
@@ -13,10 +18,15 @@ export function CheckboxComponente({ id, name, isIndeterminate, isChecked }) {
     setCheckedIds([...checkedIds, checkedId]);
   }
 
+  function handleClick() {
+    handleCheckedItems(id);
+    parentChecked(id);
+  }
+
   return (
-    <CheckboxContainer onClick={() => handleCheckedItems(id)}>
+    <CheckboxContainer onClick={() => handleClick()}>
       <Checkbox
-        isIndeterminate={false}
+        isIndeterminate={isIndeterminate}
         isChecked={checkedIds.includes(id)}
         id={id}
       />

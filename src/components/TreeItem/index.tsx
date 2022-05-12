@@ -22,10 +22,6 @@ export function TreeItem({ name, children, id }: IDtaItem) {
     return !!data.length;
   }
 
-  function lastChild(index) {
-    return data.length - 1 === index;
-  }
-
   return (
     <Container>
       <ExpandButton active={hasChildren()} onClick={toggle}>
