@@ -37,6 +37,7 @@ export const ExpandButton = styled.button<IButtonProps>`
   font-weight: 500;
   justify-content: center;
   height: 12px;
-  margin-top: 3px;
+  margin-top: 5px;
+  padding-bottom: ${({ active }) => (active ? '2px' : '0')};
   width: 12px;
 `;
