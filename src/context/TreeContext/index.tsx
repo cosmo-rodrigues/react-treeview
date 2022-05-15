@@ -10,8 +10,8 @@ import {
 import { IData } from '../../dtos';
 
 import dataValues from '../../data/data.json';
-import { flattenObject } from '../../herlper';
-import { getIdsByParentChecked } from '../helpers';
+import { flattenObject } from '../../helper';
+import { getIdsByParentChecked } from '../helper';
 
 const data = Object.values(dataValues) as any as IData[];
 
