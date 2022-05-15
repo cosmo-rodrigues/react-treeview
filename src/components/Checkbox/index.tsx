@@ -3,7 +3,8 @@ import { TreeContext } from '../../context/TreeContext';
 import { Checkbox, CheckboxContainer, Label } from './styles';
 
 export function CheckboxComponente({ id, name, isIndeterminate }) {
-  const { setCheckedIds, checkedIds, parentChecked } = useContext(TreeContext);
+  const { setCheckedIds, checkedIds, parentChecked, childrenSelectedCascate } =
+    useContext(TreeContext);
 
   useEffect(() => {
     localStorage.setItem('@treeViewApp/checked', JSON.stringify(checkedIds));
@@ -20,14 +21,18 @@ export function CheckboxComponente({ id, name, isIndeterminate }) {
 
   function handleClick() {
     handleCheckedItems(id);
-    parentChecked(id);
+  }
+
+  function checked() {
+    if (checkedIds.includes(id) || childrenSelectedCascate.includes(id))
+      return true;
   }
 
   return (
     <CheckboxContainer onClick={() => handleClick()}>
       <Checkbox
         isIndeterminate={isIndeterminate}
-        isChecked={checkedIds.includes(id)}
+        isChecked={checked()}
         id={id}
       />
       <Label htmlFor={name}>{name}</Label>

@@ -1,5 +1,6 @@
 // @ts-nocheck
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { TreeContext } from '../../context/TreeContext';
 import { IData, IDtaItem } from '../../dtos';
 import { CheckboxComponente } from '../Checkbox';
 import {
@@ -10,9 +11,10 @@ import {
 } from './styles';
 
 export function TreeItem({ name, children, id }: IDtaItem) {
-  const [open, setOpen] = useState(false);
+  const { checkedIds } = useContext(TreeContext);
+  const [open, setOpen] = useState(checkedIds.includes(id) ? true : false);
 
-  const data: IData = Object.values(children);
+  const data: IData[] = Object.values(children);
 
   function toggle() {
     setOpen(!open);

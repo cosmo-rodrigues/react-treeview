@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useContext } from 'react';
 
-import { TreeContext, TreeProvider } from '../../context/TreeContext';
+import { TreeContext } from '../../context/TreeContext';
 import { IDtaItem } from '../../dtos';
 import { TreeItem } from '../TreeItem';
 import { Container } from './styles';
@@ -11,11 +11,9 @@ export function TreeView() {
 
   return (
     <Container>
-      <TreeProvider>
-        {data.map((item: IDtaItem, index) => (
-          <TreeItem key={index} {...item} />
-        ))}
-      </TreeProvider>
+      {data.map((item: IDtaItem, index) => (
+        <TreeItem key={index} {...item} />
+      ))}
     </Container>
   );
 }
