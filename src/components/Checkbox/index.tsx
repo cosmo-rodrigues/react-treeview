@@ -3,7 +3,7 @@ import { TreeContext } from '../../context/TreeContext';
 import { Checkbox, CheckboxContainer, Label } from './styles';
 
 export function CheckboxComponente({ id, name, isIndeterminate }) {
-  const { setCheckedIds, checkedIds, parentChecked, childrenSelectedCascate } =
+  const { setCheckedIds, checkedIds, childrenSelectedCascate } =
     useContext(TreeContext);
 
   useEffect(() => {
